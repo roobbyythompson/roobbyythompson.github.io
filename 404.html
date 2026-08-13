@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080910">
+  <title>EVE profile</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at 15% 5%, #34206d 0, transparent 38%), radial-gradient(circle at 90% 90%, #123d57 0, transparent 42%), #080910; color: #f7f7fb; }
+    main { width: min(100%, 560px); padding: 36px; border: 1px solid rgba(255,255,255,.13); border-radius: 28px; background: rgba(18,19,29,.84); box-shadow: 0 24px 80px rgba(0,0,0,.38); text-align: center; }
+    .avatar { width: 82px; height: 82px; margin: 0 auto; display: grid; place-items: center; border-radius: 50%; font-size: 36px; background: linear-gradient(135deg, #b55cff, #4bc9ff); }
+    h1 { margin: 20px 0 6px; font-size: clamp(30px, 8vw, 48px); letter-spacing: -.04em; }
+    p { color: #b9bbca; font-size: 17px; line-height: 1.5; }
+    .button { display: block; margin-top: 24px; padding: 15px 20px; border-radius: 999px; color: white; text-decoration: none; font-weight: 700; background: linear-gradient(90deg, #a74cff, #35bff2); }
+    .legal { display: inline-block; margin-top: 22px; color: #8edcff; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="avatar" aria-hidden="true">✦</div>
+    <h1 id="handle">EVE profile</h1>
+    <p id="copy">Open this profile in EVE to follow, Tap In, view their public feed, or start a protected chat.</p>
+    <a class="button" id="open" href="https://roobbyythompson.github.io/">Open in EVE</a>
+    <a class="legal" href="https://roobbyythompson.github.io/eve-legal/">Privacy &amp; legal</a>
+  </main>
+  <script>
+    const match = location.pathname.match(/^\/eve\/profile\/([^/]+)\/?$/i);
+    if (match) {
+      const handle = decodeURIComponent(match[1]).replace(/^@/, "").toLowerCase();
+      document.title = `@${handle} on EVE`;
+      document.getElementById("handle").textContent = `@${handle}`;
+      document.getElementById("open").href = `eve://profile/${encodeURIComponent(handle)}`;
+    } else {
+      document.getElementById("copy").textContent = "This EVE link is not available.";
+      document.getElementById("open").textContent = "EVE home";
+    }
+  </script>
+</body>
+</html>

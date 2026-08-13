@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "Y6769V6KQQ.robbyythompson.Eve"
+        ],
+        "components": [
+          {
+            "/": "/eve/profile/*",
+            "comment": "Open public EVE profile links in the iOS app."
+          }
+        ]
+      }
+    ]
+  }
+}
