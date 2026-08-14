@@ -5,24 +5,195 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080910">
   <title>EVE · Social Intelligence</title>
+
+  <!--
+    This is the link to post when marketing the app. These tags are what make
+    it render as a card with the EVE mark instead of a bare URL on iMessage,
+    Instagram, X, Discord, WhatsApp and Slack.
+
+    og:image must be absolute. Relative paths are silently ignored by every
+    major scraper, and the failure looks identical to having no tag at all.
+  -->
+  <meta property="og:site_name" content="EVE">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EVE — Social Intelligence">
+  <meta property="og:description" content="Private AI that lives on your iPhone, real friends, and a feed built around the people you choose. Free on the App Store.">
+  <meta property="og:url" content="https://roobbyythompson.github.io/">
+  <meta property="og:image" content="https://roobbyythompson.github.io/eve/share-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="EVE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EVE — Social Intelligence">
+  <meta name="twitter:description" content="Private AI that lives on your iPhone. Free on the App Store.">
+  <meta name="twitter:image" content="https://roobbyythompson.github.io/eve/share-card.png">
+  <meta name="description" content="Private AI that lives on your iPhone, real friends, and a feed built around the people you choose. Free on the App Store.">
+  <meta name="apple-itunes-app" content="app-id=APP_STORE_ID_PENDING">
+  <link rel="icon" type="image/png" href="eve/favicon.png">
+  <link rel="apple-touch-icon" href="eve/eve-logo.png">
+
   <style>
-    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; }
+    /* The app's own palette and chrome, not a second visual language:
+       the void, the two glows, and monospaced technical labels. */
+    :root {
+      color-scheme: dark;
+      --void: #080910;
+      --violet: #b55cff;
+      --cyan: #4bc9ff;
+      --lime: #7dffb0;
+      --text: #f7f7fb;
+      --muted: #9a9dae;
+      --stroke: rgba(255,255,255,.12);
+      --fill: rgba(255,255,255,.045);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at 20% 0%, #34206d 0, transparent 38%), radial-gradient(circle at 90% 90%, #123d57 0, transparent 42%), #080910; color: #f7f7fb; }
-    main { width: min(100%, 560px); padding: 36px; border: 1px solid rgba(255,255,255,.13); border-radius: 28px; background: rgba(18,19,29,.82); box-shadow: 0 24px 80px rgba(0,0,0,.38); backdrop-filter: blur(22px); }
-    .mark { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 18px; font-size: 30px; background: linear-gradient(135deg, #b55cff, #4bc9ff); }
-    h1 { margin: 22px 0 8px; font-size: clamp(32px, 8vw, 52px); letter-spacing: -.04em; }
-    p { color: #b9bbca; font-size: 17px; line-height: 1.55; }
-    a { color: #8edcff; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(900px 520px at 12% -6%, rgba(140,70,240,.34) 0, transparent 62%),
+        radial-gradient(820px 520px at 92% 104%, rgba(28,150,205,.30) 0, transparent 60%),
+        var(--void);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 32px 20px 56px;
+      overflow-x: hidden;
+    }
+    /* Faint grid, the same technical field the app uses behind its surfaces. */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+    }
+    main { width: min(100%, 620px); position: relative; }
+
+    .kicker {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--muted);
+      display: flex; align-items: center; gap: 10px; justify-content: center;
+    }
+    .kicker::before, .kicker::after {
+      content: ""; height: 1px; flex: 1; max-width: 74px;
+      background: linear-gradient(90deg, transparent, var(--stroke));
+    }
+    .kicker::after { background: linear-gradient(90deg, var(--stroke), transparent); }
+
+    .logo {
+      width: 104px; height: 104px; display: block; margin: 26px auto 0;
+      border-radius: 26px;
+      box-shadow: 0 20px 60px rgba(140,70,240,.34), 0 0 0 1px rgba(255,255,255,.07);
+    }
+
+    h1 {
+      margin: 22px 0 0; text-align: center;
+      font-size: clamp(44px, 13vw, 78px); font-weight: 800; letter-spacing: -.045em; line-height: .96;
+    }
+    .tagline {
+      margin: 14px auto 0; max-width: 30ch; text-align: center;
+      font-size: clamp(17px, 4.6vw, 21px); line-height: 1.45; color: var(--text);
+    }
+    .tagline em { font-style: normal; color: var(--cyan); }
+
+    .cta {
+      display: block; margin: 30px auto 0; width: min(100%, 340px);
+      padding: 17px 22px; border-radius: 999px; text-align: center;
+      font-size: 17px; font-weight: 800; letter-spacing: -.01em;
+      color: #0a0a12; text-decoration: none;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      box-shadow: 0 14px 40px rgba(90,140,240,.34);
+    }
+    .cta:active { transform: translateY(1px); }
+    .cta-soon { background: rgba(255,255,255,.07); color: var(--muted); border: 1px solid var(--stroke); box-shadow: none; cursor: default; }
+    .free {
+      margin: 12px 0 0; text-align: center; color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    }
+
+    .pillars {
+      margin: 40px 0 0; padding: 0; list-style: none;
+      display: grid; gap: 10px;
+    }
+    .pillars li {
+      display: flex; gap: 13px; align-items: flex-start;
+      padding: 16px 18px; border: 1px solid var(--stroke); border-radius: 18px;
+      background: var(--fill);
+    }
+    .pillars .dot {
+      width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex: none;
+      box-shadow: 0 0 12px currentColor;
+    }
+    .pillars b { display: block; font-size: 15px; font-weight: 700; }
+    .pillars span { display: block; margin-top: 3px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+
+    footer { margin: 34px 0 0; text-align: center; }
+    footer a { color: var(--muted); font-size: 13px; text-decoration: none; border-bottom: 1px solid var(--stroke); }
+    footer a:hover { color: var(--text); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      main > * { animation: rise .5s cubic-bezier(.2,.7,.3,1) backwards; }
+      main > :nth-child(2) { animation-delay: .04s; }
+      main > :nth-child(3) { animation-delay: .08s; }
+      main > :nth-child(4) { animation-delay: .12s; }
+      main > :nth-child(5) { animation-delay: .16s; }
+      main > :nth-child(6) { animation-delay: .2s; }
+      @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+    }
   </style>
 </head>
 <body>
   <main>
-    <div class="mark" aria-hidden="true">✦</div>
+    <p class="kicker">Social Intelligence</p>
+    <img class="logo" src="eve/eve-logo.png" width="104" height="104" alt="EVE">
     <h1>EVE</h1>
-    <p>Private AI, real friends, and a social feed built around the people you choose.</p>
-    <p>Profile links open directly in EVE on iPhone when the app is installed.</p>
-    <p><a href="https://roobbyythompson.github.io/eve-legal/">Privacy &amp; legal</a></p>
+    <p class="tagline">An AI companion that lives on <em>your iPhone</em> — and the people you choose to share it with.</p>
+
+    <!--
+      PRE-LAUNCH STATE. EVE is not on the App Store yet, so this is deliberately
+      not a link — a button promising a download that 404s is worse than no
+      button. At submission, swap this span for:
+
+        <a class="cta" href="https://apps.apple.com/app/id1234567890">Get EVE on the App Store</a>
+
+      and replace APP_STORE_ID_PENDING in the apple-itunes-app meta above.
+    -->
+    <span class="cta cta-soon">Coming to the App Store</span>
+    <p class="free">Free · iPhone · No account needed</p>
+
+    <ul class="pillars">
+      <li>
+        <span class="dot" style="color:#b55cff"></span>
+        <div>
+          <b>Runs on your phone, not a data centre</b>
+          <span>Your conversations, moods and history stay on the device. Most of it never leaves.</span>
+        </div>
+      </li>
+      <li>
+        <span class="dot" style="color:#4bc9ff"></span>
+        <div>
+          <b>Your people, not an algorithm's</b>
+          <span>Follow friends, Tap In with the closest, build Circles, and share to a feed you actually chose.</span>
+        </div>
+      </li>
+      <li>
+        <span class="dot" style="color:#7dffb0"></span>
+        <div>
+          <b>Messages that disappear — unless you both keep them</b>
+          <span>End-to-end encrypted, with a 48-hour clock you control.</span>
+        </div>
+      </li>
+    </ul>
+
+    <footer>
+      <a href="https://roobbyythompson.github.io/eve-legal/">Privacy &amp; legal</a>
+    </footer>
   </main>
 </body>
 </html>
