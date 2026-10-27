@@ -17,7 +17,7 @@
   <meta property="og:site_name" content="EVE">
   <meta property="og:type" content="website">
   <meta property="og:title" content="EVE — Social Intelligence">
-  <meta property="og:description" content="Private AI that lives on your iPhone, real friends, and a feed built around the people you choose. Free on the App Store.">
+  <meta property="og:description" content="A private AI companion that lives on your iPhone, remembers what matters, and works with your Apple apps. Coming soon to the App Store.">
   <meta property="og:url" content="https://roobbyythompson.github.io/">
   <meta property="og:image" content="https://roobbyythompson.github.io/eve/share-card.png">
   <meta property="og:image:width" content="1200">
@@ -25,9 +25,9 @@
   <meta property="og:image:alt" content="EVE">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="EVE — Social Intelligence">
-  <meta name="twitter:description" content="Private AI that lives on your iPhone. Free on the App Store.">
+  <meta name="twitter:description" content="A private AI companion that lives on your iPhone. Coming soon to the App Store.">
   <meta name="twitter:image" content="https://roobbyythompson.github.io/eve/share-card.png">
-  <meta name="description" content="Private AI that lives on your iPhone, real friends, and a feed built around the people you choose. Free on the App Store.">
+  <meta name="description" content="A private AI companion that lives on your iPhone, remembers what matters, works with your Calendar, Reminders and Health, and keeps your people close. Coming soon to the App Store.">
   <meta name="apple-itunes-app" content="app-id=APP_STORE_ID_PENDING">
   <link rel="icon" type="image/png" href="eve/favicon.png">
   <link rel="apple-touch-icon" href="eve/eve-logo.png">
@@ -71,7 +71,7 @@
       background-size: 46px 46px;
       mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
     }
-    main { width: min(100%, 620px); position: relative; }
+    main { width: min(100%, 720px); position: relative; }
 
     .kicker {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -121,6 +121,11 @@
       margin: 40px 0 0; padding: 0; list-style: none;
       display: grid; gap: 10px;
     }
+    @media (min-width: 640px) { .pillars { grid-template-columns: 1fr 1fr; } }
+    .ask {
+      display: block; margin-top: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px; color: var(--text); opacity: .82;
+    }
     .pillars li {
       display: flex; gap: 13px; align-items: flex-start;
       padding: 16px 18px; border: 1px solid var(--stroke); border-radius: 18px;
@@ -153,7 +158,7 @@
     <p class="kicker">Social Intelligence</p>
     <img class="logo" src="eve/eve-logo.png" width="104" height="104" alt="EVE">
     <h1>EVE</h1>
-    <p class="tagline">An AI companion that lives on <em>your iPhone</em> — and the people you choose to share it with.</p>
+    <p class="tagline">An AI companion that lives on <em>your iPhone</em>, remembers what matters, and works with the apps you already use.</p>
 
     <!--
       PRE-LAUNCH STATE. EVE is not on the App Store yet, so this is deliberately
@@ -164,28 +169,50 @@
 
       and replace APP_STORE_ID_PENDING in the apple-itunes-app meta above.
     -->
-    <span class="cta cta-soon">Coming to the App Store</span>
-    <p class="free">Free · iPhone · No account needed</p>
+    <span class="cta cta-soon">Coming soon to the App Store</span>
+    <p class="free">Free · iPhone · No account needed · 13+</p>
 
     <ul class="pillars">
       <li>
         <span class="dot" style="color:#b55cff"></span>
         <div>
-          <b>Runs on your phone, not a data centre</b>
-          <span>Your conversations, moods and history stay on the device. Most of it never leaves.</span>
+          <b>Runs on your iPhone, not a data centre</b>
+          <span>Your conversations, memories and moods stay on the device. No sign-up to start talking.</span>
         </div>
       </li>
       <li>
         <span class="dot" style="color:#4bc9ff"></span>
         <div>
-          <b>Your people, not an algorithm's</b>
+          <b>Remembers what matters</b>
+          <span>Say “never forget…” and it’s kept for good. Life’s big moments are kept on their own, everyday things fade, and you can see or delete any of it.</span>
+        </div>
+      </li>
+      <li>
+        <span class="dot" style="color:#7dffb0"></span>
+        <div>
+          <b>Works with your Apple apps</b>
+          <span>Connect Calendar, Reminders and Health, then just ask.</span>
+          <span class="ask">“What do I have tomorrow?” · “Remind me to call Mom at 6.”</span>
+        </div>
+      </li>
+      <li>
+        <span class="dot" style="color:#4bc9ff"></span>
+        <div>
+          <b>Checks the facts when you ask</b>
+          <span>Tap the globe and answers come from trusted public sources like NASA, NOAA, USGS and Wikidata, with the source shown.</span>
+        </div>
+      </li>
+      <li>
+        <span class="dot" style="color:#b55cff"></span>
+        <div>
+          <b>Your people, not an algorithm’s</b>
           <span>Follow friends, Tap In with the closest, build Circles, and share to a feed you actually chose.</span>
         </div>
       </li>
       <li>
         <span class="dot" style="color:#7dffb0"></span>
         <div>
-          <b>Messages that disappear — unless you both keep them</b>
+          <b>Messages that disappear, unless you both keep them</b>
           <span>End-to-end encrypted, with a 48-hour clock you control.</span>
         </div>
       </li>
@@ -193,6 +220,8 @@
 
     <footer>
       <a href="https://roobbyythompson.github.io/eve-legal/">Privacy &amp; legal</a>
+      &nbsp;·&nbsp;
+      <a href="https://roobbyythompson.github.io/eve-legal/support.html">Support</a>
     </footer>
   </main>
 </body>
